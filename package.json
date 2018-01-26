@@ -1,0 +1,32 @@
+{
+  "name": "koa2-blog1",
+  "version": "1.0.0",
+  "description": "blog1",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "dev": "supervisor --harmony index",
+    "test": "./node_modules/mocha/bin/mocha --harmony test"
+  },
+  "author": "songtao",
+  "license": "MIT",
+  "dependencies": {
+    "ali-oss": "^4.11.4",
+    "all-files-in-tree": "^1.1.2",
+    "co": "^4.6.0",
+    "formidable": "^1.1.1",
+    "koa": "^2.3.0",
+    "koa-body": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-compose": "^4.0.0",
+    "koa-router": "^7.3.0",
+    "koa-static-cache": "^5.1.1",
+    "koa2-cors": "^2.0.5",
+    "marked": "^0.3.12",
+    "md5": "^2.2.1",
+    "moment": "^2.20.1",
+    "mysql": "^2.15.0"
+  }
+}
