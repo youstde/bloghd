@@ -7,6 +7,7 @@ koa2
 MySQL
 
 ali-oss
+本地运行是npm run pre
 
 
 

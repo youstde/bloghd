@@ -6,13 +6,24 @@ const config = require('./config/default.js');
 const middlewares = require('./middlewares/middlewares.js');
 const staticCache = require('koa-static-cache');
 const app = new Koa();
+var _environment = process.argv[2];
+console.log('_environment:',_environment);
+if(_environment && _environment === 'pre') {
+    config.ENVIRONMENT = 'PRE';
+    config.DOMAIN = 'youstde.blog.com';
+}
+console.log(config.ENVIRONMENT);
 // 具体参数我们在后面进行解释
 app.use(cors({
     origin: function (ctx) {
         if (ctx.url === '/test') {
             return "*"; // 允许来自所有域名请求
         }
-        return 'http://youstde.blog.com'; // 这样就能只允许localhost:8080 这个域名的请求了
+        if(config.ENVIRONMENT == 'PRE') {
+            return 'http://youstde.blog.com'; // 这样就能只允许localhost:8080 这个域名的请求了
+        }else {
+            return 'http://stblog.ltyun.cc';
+        }
     },
     exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
     maxAge: 5,

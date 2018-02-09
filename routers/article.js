@@ -105,6 +105,61 @@ router.get('/getArticleById', async(ctx, next) => {
             data: articleObj
         }    
 });
+//通过label获取文章
+router.get('/getArticleByLabel', async(ctx, next) => {
+        console.log(ctx.query);
+        let quary = ctx.query,
+            articleArr = [],
+            newArticleArr = [];
+        if(quary.id) {
+            await userModel.findArticleByLabel(Number(quary.id)).then((res)=>{
+                if(res.length) {
+                    articleArr = res;
+                }else {
+                    ctx.body = {
+                        success: false,
+                        data: {
+                            msg: '获取文章失败'
+                        }
+                    }
+                }
+            });
+            for(let item of articleArr) {
+                let articleItem = {
+                    id: item.id,
+                    title: item.title,
+                    postImg: item.postimg,
+                    resume: item.resume,
+                    moment: item.moment,
+                    view: item.view,
+                    likes: item.likes,
+                    discuss: item.discuss
+                };
+                newArticleArr.push(articleItem);
+                ticket = item.ticket;
+                await userModel.findLabelById(item.label).then(res=>{
+                    if(res.length) {
+                        articleItem.labelTitle = res[0].title;
+                    }
+                }); 
+                 if(ticket) {
+                    await userModel.findUserByTicket(ticket).then((res)=>{
+                        if(res.length) {
+                            articleItem.userName = res[0].name;
+                            articleItem.avator = res[0].avator;
+                        }
+                    });
+                }
+            }
+        }
+        if(newArticleArr) {
+
+        }
+        ctx.body = {
+            success: true,
+            data: newArticleArr
+        }    
+});
 //创建文章
 router.post('/publicArticle',koaBody, async(ctx, next) => {
         console.log(ctx.request.body);

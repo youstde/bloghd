@@ -10,6 +10,7 @@ const moment = require('moment');
 const Oss = require('../lib/oss.js');
 const userModel = require('../lib/mysql.js');
 const checkObj = require('../utils/check.js');
+const config = require('../config/default.js');
 //测试用
 router.get('/imageExit/:action', async(ctx, next) => {
         console.log(ctx.params.action);
@@ -136,7 +137,8 @@ router.post('/signIn',koaBody, async(ctx, next) => {
                                 'USER_ID',
                                 res[0].ticket,
                                 {
-                                    domain: 'youstde.blog.com',
+                                    domain: config.DOMAIN,  //线上
+                                    // domain: 'youstde.blog.com',
                                     path: '/',
                                     maxAge: 24 * 60 * 60 * 1000,
                                     expires: new Date('2018-1-21'),  // cookie失效时间
