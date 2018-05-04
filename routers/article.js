@@ -79,6 +79,7 @@ router.get('/getArticleById', async(ctx, next) => {
                     articleObj.detail = res[0].detail;
                     articleObj.moment = res[0].moment;
                     articleObj.title = res[0].title;
+                    articleObj.view = res[0].view;
                     articleObj.discuss = res[0].discuss;
                     articleObj.likes = res[0].likes;
                     ticket = res[0].ticket;
@@ -90,6 +91,9 @@ router.get('/getArticleById', async(ctx, next) => {
                         }
                     }
                 }
+            });
+            await userModel.updatePostPv([articleObj.view + 1, Number(quary.id)]).then((res)=>{
+                console.log('articlePvUpdate:',res);
             });
             if(ticket) {
                 await userModel.findUserByTicket(ticket).then((res)=>{
