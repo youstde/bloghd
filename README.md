@@ -5,6 +5,7 @@
 koa2
 
 MySQL
+本地启动MySQL：bash mysql.server start
 
 ali-oss
 本地运行是npm run pre
