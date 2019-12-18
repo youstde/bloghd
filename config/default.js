@@ -18,8 +18,8 @@ const config = {
   },
   ossConfig: {
     region: 'oss-cn-beijing',
-    accessKeyId: 'LTAIpsTPM0CtU3gh',
-    accessKeySecret: 'ZxLA96YGXlwrk0cQgw2QvA1DDzcuwG'
+    accessKeyId: 'xxx',
+    accessKeySecret: 'xxxxxxx'
   },
   ENVIRONMENT: 'PROD',
   DOMAIN: 'stblog.ltyun.cc'
