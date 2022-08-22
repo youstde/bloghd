@@ -10,11 +10,11 @@ const config = {
   //   HOST: 'localhost'
   // }
   database: {
-    DATABASE: 'stblog',
+    DATABASE: 'xxx',
     USERNAME: 'cow',
-    PASSWORD: 'BaiTai890',
+    PASSWORD: 'xxx',
     PORT: '3306',
-    HOST: 'rm-bp1c5c89758v1r68fo.mysql.rds.aliyuncs.com'
+    HOST: 'rxxxm'
   },
   ossConfig: {
     region: 'oss-cn-beijing',
